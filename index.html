@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS RATHOR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0e0e0e;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ========================= */
+/* INTRO SCREEN */
+/* ========================= */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 1.4s cubic-bezier(.77,0,.18,1);
+}
+
+.intro h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(4rem, 12vw, 12rem);
+  letter-spacing: -4px;
+  line-height: 0.9;
+  text-align: center;
+}
+
+/* Curtain layer */
+
+.intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f5f5f5;
+  transform: translateY(100%);
+  transition: transform 1.4s cubic-bezier(.77,0,.18,1);
+}
+
+/* When revealed */
+
+.intro.reveal {
+  transform: translateY(-100%);
+}
+
+.intro.reveal::after {
+  transform: translateY(0);
+}
+
+/* ========================= */
+/* PORTFOLIO CONTENT */
+/* ========================= */
+
+.portfolio {
+  min-height: 100vh;
+  padding: 10vh 8vw;
+}
+
+.portfolio h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+}
+
+.project {
+  padding: 3rem 0;
+  border-bottom: 1px solid #222;
+  font-size: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+.project:hover {
+  transform: translateX(20px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="intro" id="intro">
+  <h1>MS<br>RATHOR</h1>
+</div>
+
+<section class="portfolio">
+  <h2>Selected Work</h2>
+
+  <div class="project">01 — UI Systems Developer</div>
+  <div class="project">02 — Angular Platforms</div>
+  <div class="project">03 — Design Engineering</div>
+</section>
+
+<script>
+const intro = document.getElementById("intro");
+
+// Auto reveal after 10 seconds
+setTimeout(() => {
+  intro.classList.add("reveal");
+}, 10000);
+
+// Reveal on hover
+intro.addEventListener("mouseenter", () => {
+  intro.classList.add("reveal");
+});
+
+// Reveal on click
+intro.addEventListener("click", () => {
+  intro.classList.add("reveal");
+});
+</script>
+
+</body>
+</html>
